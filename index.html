@@ -17,6 +17,7 @@
     <div class="container">
         <div class="row">
             <p class="m-auto" id="status"></p>
+            <video autoplay></video>
         </div>
 
     </div>
@@ -35,12 +36,29 @@
 
     <script>
         $(() => {
-            console.log(navigator);
+
             console.log("ready!");
-            if ("camera" in navigator) {
-                console.log("have camera");
+            if (hasGetUserMedia()) {
+                // Good to go!
+                const constraints = {
+                    video: true
+                };
+
+                const video = document.querySelector('video');
+
+                navigator.mediaDevices.getUserMedia(constraints).
+                    then((stream) => { video.srcObject = stream });
+            } else {
+                alert('getUserMedia() is not supported by your browser');
             }
         });
+
+        function hasGetUserMedia() {
+            return !!(navigator.mediaDevices &&
+                navigator.mediaDevices.getUserMedia);
+        }
+
+
     </script>
 
 </body>
