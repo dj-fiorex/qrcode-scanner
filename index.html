@@ -34,7 +34,9 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <script>
+    <script type="module">
+        import QrScanner from 'assets/qr-scanner.min.js';
+        // do something with QrScanner
         $(() => {
 
             console.log("ready!");
@@ -58,9 +60,7 @@
                 navigator.mediaDevices.getUserMedia);
         }
 
-
     </script>
-
 </body>
 
 </html>
